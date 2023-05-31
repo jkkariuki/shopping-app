@@ -32,8 +32,8 @@ app.post("/checkout", async (req, res) => {
     line_items: lineItems,
     mode: "payment",
     success_url:
-      "http://localhost:3000/success?session_id={CHECKOUT_SESSION_ID}",
-    cancel_url: "http://localhost:3000/cancel",
+      "https://shopping-app-jk.herokuapp.com/success?session_id={CHECKOUT_SESSION_ID}",
+    cancel_url: "https://shopping-app-jk.herokuapp.com/cancel",
   });
 
   res.send(
