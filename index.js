@@ -9,7 +9,7 @@ app.use(express.static(path.join(__dirname + "/public")));
 app.use(cors());
 app.use(express.json());
 
-app.post("/checkout", async (req, res) => {
+app.post("/api/checkout", async (req, res) => {
   console.log(req.body);
   const items = req.body.items;
   console.log(items);
