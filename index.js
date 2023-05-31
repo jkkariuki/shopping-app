@@ -10,6 +10,7 @@ app.use(cors());
 app.use(express.json());
 
 app.post("/checkout", async (req, res) => {
+  console.log("!!!!!!!!STRIPE KEY: " + process.env.STRIPE_KEY);
   console.log(req.body);
   const items = req.body.items;
   console.log(items);
