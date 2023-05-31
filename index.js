@@ -2,7 +2,7 @@ const express = require("express");
 const path = require("path");
 require("dotenv").config();
 const cors = require("cors");
-const PORT = process.env.port || 5000;
+const PORT = process.env.PORT || 5000;
 const stripe = require("stripe")(process.env.STRIPE_KEY);
 const app = express();
 app.use(express.static(path.join(__dirname + "/public")));
