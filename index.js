@@ -33,7 +33,7 @@ app.post("/checkout", async (req, res) => {
   const session = await stripe.checkout.sessions.create({
     line_items: lineItems,
     mode: "payment",
-    success_url: "https://shopping-app-jk.herokuapp.com/",
+    success_url: "https://shopping-app-jk.herokuapp.com/success",
     cancel_url: "https://shopping-app-jk.herokuapp.com/cancel",
   });
 
