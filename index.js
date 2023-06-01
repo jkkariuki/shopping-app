@@ -45,15 +45,13 @@ app.post("/checkout", async (req, res) => {
   );
 });
 
-if(process.env.NODE_ENV === 'production') {
-    //Set static folder
-    app.use(express.static(path.join(__dirname + "/public")));
+if (process.env.NODE_ENV === "production") {
+  //Set static folder
+  app.use(express.static(path.join(__dirname + "/public")));
 
-    app.get('*', (req, res) => {
-        res.sendFile(path.resolve(__dirname + "/public"))
-    })
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname + "/public"));
+  });
 }
-
-if(process.env.NODE_ENV ===)
 
 app.listen(PORT, () => console.log("listening on port 5000"));
