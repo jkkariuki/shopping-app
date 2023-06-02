@@ -8,7 +8,21 @@ const stripe = require("stripe")(process.env.STRIPE_KEY);
 const app = express();
 
 app.use(cors());
+app.use(
+  //   express.static(path.join(__dirname, "..", "client", "shopapp", "build"))
+  express.static(path.resolve(__dirname + "/public"))
+
+  //   express.static(path.join(__dirname + "path"))
+);
+
 app.use(express.json());
+
+app.get("*", (req, res) => {
+  res.sendFile(
+    // path.resolve(__dirname, "..", "client", "shopapp", "build", "index.html")
+    path.resolve(__dirname, "public", "index.html")
+  );
+});
 
 app.post("/checkout", async (req, res) => {
   console.log("!!!!!!!!STRIPE KEY: " + process.env.STRIPE_KEY);
@@ -33,7 +47,7 @@ app.post("/checkout", async (req, res) => {
   const session = await stripe.checkout.sessions.create({
     line_items: lineItems,
     mode: "payment",
-    success_url: "/success",
+    success_url: "https://shopping-app-jk.herokuapp.com/success",
     cancel_url: "https://shopping-app-jk.herokuapp.com/cancel",
   });
 
@@ -43,6 +57,5 @@ app.post("/checkout", async (req, res) => {
     })
   );
 });
-app.use(express.static(path.join(__dirname + "/public")));
 
 app.listen(PORT, () => console.log("listening on port 5000"));
